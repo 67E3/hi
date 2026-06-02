@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blacket Claimer - Legal & Help</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --border-color: #000000;
+            --highlight-bg: #f5f5f5;
+            --hover-bg: #000000;
+            --hover-text: #ffffff;
+            --secondary-text: #333333;
+            --tertiary-text: #666666;
+        }
+
+        body.dark-mode {
+            --bg-color: #1a1a1a;
+            --text-color: #ffffff;
+            --border-color: #ffffff;
+            --highlight-bg: #2a2a2a;
+            --hover-bg: #ffffff;
+            --hover-text: #000000;
+            --secondary-text: #cccccc;
+            --tertiary-text: #999999;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .theme-toggle-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--text-color);
+            color: var(--bg-color);
+            border: 2px solid var(--border-color);
+            cursor: pointer;
+            font-size: 1.3em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle-btn:hover {
+            transform: scale(1.1);
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 20px;
+            gap: 20px;
+        }
+
+        .header-content {
+            flex: 1;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1em;
+            color: var(--secondary-text);
+            font-weight: 300;
+            margin-bottom: 8px;
+        }
+
+        .created-date {
+            font-size: 0.85em;
+            color: var(--tertiary-text);
+            font-style: italic;
+        }
+
+        .bot-pfp {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: spin 4s linear infinite;
+            flex-shrink: 0;
+            border: 2px solid var(--border-color);
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 12px 24px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            border: 2px solid var(--border-color);
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: var(--hover-bg);
+            color: var(--hover-text);
+        }
+
+        button.active {
+            background-color: var(--hover-bg);
+            color: var(--hover-text);
+        }
+
+        .content {
+            display: none;
+        }
+
+        .content.active {
+            display: block;
+        }
+
+        .content h2 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            margin-top: 30px;
+        }
+
+        .content h3 {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            margin-top: 25px;
+        }
+
+        .content p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .content ul, .content ol {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+
+        .content li {
+            margin-bottom: 10px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .highlight {
+            background-color: var(--highlight-bg);
+            padding: 15px;
+            border-left: 3px solid var(--border-color);
+            margin-bottom: 15px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid var(--border-color);
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: all 0.3s ease;
+            gap: 10px;
+        }
+
+        .social-link:hover {
+            transform: scale(1.1);
+        }
+
+        .social-icon {
+            font-size: 2.5em;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--border-color);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover .social-icon {
+            background-color: var(--hover-bg);
+            color: var(--hover-text);
+        }
+
+        .social-label {
+            font-size: 0.9em;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .install-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: var(--hover-bg);
+            color: var(--hover-text);
+            border: 2px solid var(--border-color);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-align: center;
+            margin: 20px 0;
+            cursor: pointer;
+        }
+
+        .install-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        body.dark-mode .install-btn:hover {
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 2px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--tertiary-text);
+        }
+
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            button {
+                width: 100%;
+            }
+
+            .bot-pfp {
+                width: 100px;
+                height: 100px;
+            }
+
+            .social-links {
+                gap: 20px;
+            }
+
+            .social-icon {
+                font-size: 2em;
+                width: 50px;
+                height: 50px;
+            }
+
+            .theme-toggle {
+                top: 10px;
+                right: 10px;
+            }
+
+            .theme-toggle-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="theme-toggle">
+        <button class="theme-toggle-btn" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="bot-pfp" style="background-image: url('https://i.postimg.cc/FRzT8Mjv/523e1ccc-c72a-4c73-bc49-67d9806e42fc-(1).png');"></div>
+            <div class="header-content">
+                <h1>Blacket Claimer</h1>
+                <p class="subtitle">Discord Bot - Legal Documents</p>
+                <p class="created-date">Created on June 1, 2026</p>
+            </div>
+            <div class="bot-pfp" style="background-image: url('https://i.postimg.cc/FRzT8Mjv/523e1ccc-c72a-4c73-bc49-67d9806e42fc-(1).png');"></div>
+        </header>
+
+        <nav>
+            <button onclick="showSection('privacy')" class="active">Privacy Policy</button>
+            <button onclick="showSection('terms')">Terms of Service</button>
+        </nav>
+
+        <div id="privacy" class="content active">
+            <h2>Privacy Policy</h2>
+            <p><strong>Last Updated: June 2, 2026</strong></p>
+
+            <div class="section">
+                <h3>1. Introduction</h3>
+                <p>
+                    Blacket Claimer ("the Bot") is a Discord bot designed to help users claim their Blacket tokens daily. 
+                    This Privacy Policy outlines how we collect, use, and protect your personal information when using our service.
+                </p>
+            </div>
+
+            <div class="section">
+                <h3>2. Information We Collect</h3>
+                <p>We collect the following information when you use the Bot:</p>
+                <ul>
+                    <li><strong>Discord User ID:</strong> Used to identify you and provide personalized service</li>
+                    <li><strong>Server/Guild ID:</strong> To track which Discord servers use the Bot</li>
+                    <li><strong>Command Usage Data:</strong> Information about which commands you execute</li>
+                    <li><strong>Timestamps:</strong> When you use the Bot's features</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h3>3. How We Use Your Information</h3>
+                <p>Your information is used for the following purposes:</p>
+                <ul>
+                    <li>To provide and maintain the Bot's functionality</li>
+                    <li>To track your daily token claims</li>
+                    <li>To improve and optimize the Bot's performance</li>
+                    <li>To prevent abuse and ensure fair usage</li>
+                    <li>To respond to your inquiries and support requests</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h3>4. Data Storage and Security</h3>
+                <div class="highlight">
+                    <p>
+                        Your data is stored securely on our servers. We implement industry-standard security measures 
+                        to protect your information from unauthorized access, alteration, or disclosure.
+                    </p>
+                </div>
+                <p>However, no method of transmission over the internet is 100% secure. While we strive to protect your data, 
+                we cannot guarantee absolute security.</p>
+            </div>
+
+            <div class="section">
+                <h3>5. Data Retention</h3>
+                <p>
+                    We retain your data for as long as necessary to provide the service. You may request deletion of your data 
+                    at any time by contacting us. However, some data may be retained to comply with legal obligations.
+                </p>
+            </div>
+
+            <div class="section">
+                <h3>6. Third-Party Access</h3>
+                <p>
+                    We do not sell, trade, or rent your personal information to third parties. Discord's Privacy Policy also applies, 
+                    as the Bot operates through Discord's platform.
+                </p>
+            </div>
+
+            <div class="section">
+                <h3>7. User Rights</h3>
+                <p>You have the right to:</p>
+                <ul>
+                    <li>Access your personal data</li>
+                    <li>Request correction of inaccurate data</li>
+                    <li>Request deletion of your data (right to be forgotten)</li>
+                    <li>Withdraw consent at any time</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h3>8. Changes to This Policy</h3>
+                <p>
+                    We may update this Privacy Policy from time to time. We will notify users of any significant changes. 
+                    Continued use of the Bot after changes indicates your acceptance of the new terms.
+                </p>
+            </div>
+
+            <div class="section">
+                <h3>9. Contact Us</h3>
+                <p>
+                    If you have questions about this Privacy Policy or wish to exercise your data rights, 
+                    please contact us through the official Discord server or support channels.
+                </p>
+            </div>
+        </div>
+
+        <div id="terms" class="content">
+            <h2>Terms of Service</h2>
+            <p><strong>Last Updated: June 2, 2026</strong></p>
+
+            <div class="section">
+                <h3>1. Acceptance of Terms</h3>
+                <p>
+                    By using Blacket Claimer, you agree to comply with these Terms of Service. If you do not agree to these terms, 
+                    please do not use the Bot. We reserve the right to modify these terms at any time without prior notice.
+                </p>
+            </div>
+
+            <div class="section">
+                <h3>2. Service Description</h3>
+                <p>
+                    Blacket Claimer is a Discord bot that allows users to claim their Blacket tokens on a daily basis. 
+                    The Bot is provided "as is" without any warranties or guarantees.
+                </p>
+            </div>
+
+            <div class="section">
+                <h3>3. User Responsibilities</h3>
+                <p>As a user, you agree to:</p>
+                <ul>
+                    <li>Use the Bot in compliance with Discord's Terms of Service and Community Guidelines</li>
+                    <li>Not attempt to manipulate, exploit, or abuse the Bot's functionality</li>
+                    <li>Not use the Bot for any illegal or harmful purposes</li>
+                    <li>Respect the intellectual property rights of the Bot's developers</li>
+                    <li>Not attempt to reverse-engineer or reproduce the Bot without permission</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h3>4. Prohibited Activities</h3>
+                <p>The following activities are strictly prohibited:</p>
+                <ul>
+                    <li>Botting, scripting, or automating claims beyond the Bot's intended functionality</li>
+                    <li>Exploiting bugs or vulnerabilities</li>
+                    <li>Harassment or abuse of other users</li>
+                    <li>Using the Bot to spam or flood servers</li>
+                    <li>Attempting to gain unauthorized access to the Bot's backend</li>
+                    <li>Creating fake or misleading content related to the Bot</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h3>5. Account Suspension and Termination</h3>
+                <div class="highlight">
+                    <p>
+                        We reserve the right to suspend or permanently ban users who violate these Terms of Service 
+                        or engage in prohibited activities. Violations may result in account termination without warning.
+                    </p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>6. Disclaimer of Warranties</h3>
+                <p>
+                    The Bot is provided on an "AS IS" and "AS AVAILABLE" basis. We make no warranties, express or implied, 
+                    regarding the Bot's functionality, reliability, or availability. The Bot may experience downtime, bugs, or errors.
+                </p>
+            </div>
+
+            <div class="section">
+                <h3>7. Limitation of Liability</h3>
+                <p>
+                    To the maximum extent permitted by law, we shall not be liable for any indirect, incidental, special, 
+                    consequential, or punitive damages arising from your use of or inability to use the Bot.
+                </p>
+            </div>
+
+            <div class="section">
+                <h3>8. Fair Usage Policy</h3>
+                <p>
+                    Users are expected to use the Bot fairly and in accordance with its intended purpose. 
+                    Excessive or abnormal usage may result in temporary restrictions or permanent bans.
+                </p>
+            </div>
+
+            <div class="section">
+                <h3>9. Third-Party Services</h3>
+                <p>
+                    The Bot operates through Discord's services. These Terms of Service are in addition to Discord's Terms of Service, 
+                    and you must comply with both. We are not responsible for Discord's policies or actions.
+                </p>
+            </div>
+
+            <div class="section">
+                <h3>10. Governing Law</h3>
+                <p>
+                    These Terms of Service are governed by applicable laws. Any disputes shall be resolved in accordance with 
+                    the jurisdiction where the Bot's developers are located.
+                </p>
+            </div>
+
+            <div class="section">
+                <h3>11. Contact and Support</h3>
+                <p>
+                    For questions or disputes regarding these Terms of Service, please contact us through the official support channels. 
+                    We will make every effort to resolve issues promptly and fairly.
+                </p>
+            </div>
+
+            <div class="section">
+                <h3>12. Acknowledgment</h3>
+                <p>
+                    By using Blacket Claimer, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service.
+                </p>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin: 40px 0;">
+            <a href="https://discord.com/oauth2/authorize?client_id=1511031323278446703" class="install-btn">
+                <i class="fab fa-discord"></i> Install Bot
+            </a>
+        </div>
+
+        <div class="social-links">
+            <a href="https://discord.gg/qbmR58QUv3" target="_blank" class="social-link">
+                <div class="social-icon">
+                    <i class="fab fa-discord"></i>
+                </div>
+                <span class="social-label">Discord Server</span>
+            </a>
+
+            <a href="https://github.com/67E3/Blacket-Claimer" target="_blank" class="social-link">
+                <div class="social-icon">
+                    <i class="fab fa-github"></i>
+                </div>
+                <span class="social-label">GitHub</span>
+            </a>
+
+            <div class="social-link">
+                <div class="social-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <span class="social-label">Support: lemonwop</span>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 Blacket Claimer. All rights reserved. | Last Updated: June 2, 2026</p>
+        </footer>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            const contents = document.querySelectorAll('.content');
+            contents.forEach(content => {
+                content.classList.remove('active');
+            });
+
+            const buttons = document.querySelectorAll('nav button');
+            buttons.forEach(button => {
+                button.classList.remove('active');
+            });
+
+            document.getElementById(sectionId).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const themeToggle = document.querySelector('.theme-toggle-btn i');
+            
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+                themeToggle.classList.remove('fa-moon');
+                themeToggle.classList.add('fa-sun');
+            } else {
+                localStorage.setItem('theme', 'light');
+                themeToggle.classList.remove('fa-sun');
+                themeToggle.classList.add('fa-moon');
+            }
+        }
+
+        window.addEventListener('load', () => {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            const body = document.body;
+            const themeToggle = document.querySelector('.theme-toggle-btn i');
+            
+            if (savedTheme === 'dark') {
+                body.classList.add('dark-mode');
+                themeToggle.classList.remove('fa-moon');
+                themeToggle.classList.add('fa-sun');
+            }
+        });
+    </script>
+</body>
+</html>
